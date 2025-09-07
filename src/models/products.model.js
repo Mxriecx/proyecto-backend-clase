@@ -36,11 +36,11 @@ const productSchema = new mongoose.Schema({
 
     date:{
         type: Date,
-        default : date.now
+        default : Date.now
     },
 
 
 })
 
-export const productModel = mongoose.Model("products",productSchema)
+export const productModel = mongoose.model("products",productSchema)
 

@@ -3,7 +3,7 @@ import {postUser,getUser,putUserById,deleteUserById} from "../controllers/users.
 
 //2.configurar las rutas:
 
-const userRouter = express.Router();
+export const userRouter = express.Router();
 
 //3. ruta para el post 
 userRouter.post("/",postUser);

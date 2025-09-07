@@ -5,13 +5,13 @@ import { postProduct,getProduct,putProductById,deleteProductById } from "../cont
 
 //2.configurar las rutas:
 
-const productRouter = express.Router();
+export const productRouter = express.Router();
 
 //3. ruta para el post 
 productRouter.post("/crear",postProduct);
 
 // ruta para el get
-productRouter.get("/mostar",getProduct);
+productRouter.get("/mostrar",getProduct);
 
 //ruta para el put
 productRouter.put("/actualizar/:id",putProductById);
