@@ -14,7 +14,7 @@ productRouter.post("/crear",postProduct);
 productRouter.get("/mostrar",getProduct);
 
 //ruta para el put
-productRouter.put("/actualizar/:id",putProductById);
+productRouter.put("/actualizar/:_id",putProductById);
 
 //ruta para el delete
-productRouter.delete("/eliminar/:id",deleteProductById);
+productRouter.delete("/eliminar/:_id",deleteProductById);

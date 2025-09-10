@@ -12,7 +12,7 @@ userRouter.post("/",postUser);
 userRouter.get("/",getUser);
 
 //ruta para el put
-userRouter.put("/:id",putUserById);
+userRouter.put("/:_id",putUserById);
 
 //ruta para el delete
-userRouter.delete("/:id",deleteUserById);
+userRouter.delete("/:_id",deleteUserById);
