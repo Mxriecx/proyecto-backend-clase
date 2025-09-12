@@ -7,7 +7,8 @@ import cors from "cors";
 import { conexionMongo } from "./src/config/db.js";
 import { productRouter } from "./src/routes/products.routes.js";
 import { userRouter } from "./src/routes/users.routes.js"
-
+import path from "path";
+import { fileURLToPath } from "url";
 
 //2. configurar las dependencias que necesitamos
 
@@ -15,6 +16,9 @@ const app = express();
 dotenv.config();
 const port = process.env.PORT;
 conexionMongo();
+const _filename = fileURLToPath(import.meta.url);// identifica el archivo en el que estamos
+const _dirname = path.dirname(_filename); // identifica la carpeta en la que estamos
+
 
 // 3. funcionalidades a agregar 
 
@@ -27,6 +31,7 @@ app.use(cors()); //habilita CORS
 app.use(express.json());
 app.use("/products", productRouter);
 app.use("/users", userRouter)
+app.use("/uploads",express.static(path.join(_dirname,"src/uploads")));
 
 //4. levantar el servidor
 

@@ -8,7 +8,20 @@ import {productModel} from "../models/products.model.js";
 export const postProduct = async (request,response) => {
  // aca va la logica de la peticion
    try{
-    await productModel.create(request.body);
+
+    if (!request.file){
+      return response.status(400).json({
+        "mensaje":"Debes subir un archivo de imagen"
+      })
+    }
+
+     const newProduct = {
+      ...request.body,
+      image: `/uploads/${request.file.filename}`
+     }
+
+    await productModel.create(newProduct);
+    
     return response.status(201).json({"mensaje":"producto creado correctamente"});
 
    }catch (error) {
