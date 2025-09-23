@@ -7,6 +7,7 @@ import cors from "cors";
 import { conexionMongo } from "./src/config/db.js";
 import { productRouter } from "./src/routes/products.routes.js";
 import { userRouter } from "./src/routes/users.routes.js"
+import { loginRouter } from "./src/routes/login.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -31,10 +32,10 @@ app.use(cors()); //habilita CORS
 app.use(express.json());
 app.use("/products", productRouter);
 app.use("/users", userRouter)
-app.use("/uploads",express.static(path.join(_dirname,"src/uploads")));
+app.use("/uploads", express.static(path.join(_dirname, "src/uploads")));
+app.use("/login",loginRouter);
 
 //4. levantar el servidor
-
 app.listen(port, () => {
   console.log(`El servidor se esta ejecutando en http://localhost:${port}`)
 });

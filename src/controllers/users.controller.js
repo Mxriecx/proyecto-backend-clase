@@ -10,16 +10,17 @@ export const postUser = async (request, response) => {
     try {
         // deestructuracion se hace para procesar la informacion del usuario antes de guardarla 
 
-        const { name, age, username, password, role } = request.body;
+        const { name, age, username, password, role , email } = request.body;
 
-        const codedPassword = bcryptjs.hash(password, 8);
+        const codedPassword = await bcryptjs.hash(password, 8);
 
         await userModel.create({
             name,
             age,
             username,
             password: codedPassword,
-            role
+            role,
+            email
         });
 
         return response.status(201).json({
