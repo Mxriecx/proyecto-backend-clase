@@ -23,10 +23,8 @@ const _dirname = path.dirname(_filename); // identifica la carpeta en la que est
 
 // 3. funcionalidades a agregar 
 
-app.get("/", (req, res) => {
-  res.send("el servidor funciona")
-
-});
+//app.get("/", (req, res) => {
+  //res.send("el servidor funciona")});
 
 app.use(cors()); //habilita CORS
 app.use(express.json());
@@ -34,6 +32,13 @@ app.use("/products", productRouter);
 app.use("/users", userRouter)
 app.use("/uploads", express.static(path.join(_dirname, "src/uploads")));
 app.use("/login",loginRouter);
+
+//servir el frontend
+app.use(express.static(path.join(_dirname, "dist", "frontend", "browser")));
+
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(_dirname, "dist", "frontend", "browser", "index.html"));
+});
 
 //4. levantar el servidor
 app.listen(port, () => {
